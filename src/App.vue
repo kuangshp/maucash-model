@@ -1,20 +1,20 @@
 <template>
   <div id="app">
     <button @click="open">打开弹框</button>
-    <Model
+    <maucash-model
       v-model="model"
       draggable
       title="标题"
-    >内容体</Model>
+    >内容体</maucash-model>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import Model from './components/Model.vue';
+import maucashModel from './components/maucash-model.vue';
 @Component({
   components: {
-    Model,
+    maucashModel,
   },
 })
 export default class App extends Vue {

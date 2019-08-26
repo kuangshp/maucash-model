@@ -1,12 +1,12 @@
 {
   "name": "maucash-model",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "dist": "vue-cli-service build --target lib --name maucash-model ./src/components/*"
+    "dist": "rm -rf dist & vue-cli-service build --target lib --name maucash-model ./src/components/maucash-model.vue"
   },
   "main": "./dist/maucash-model.umd.min.js",
   "keywords": [
