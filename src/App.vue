@@ -1,29 +1,30 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+    <button @click="open">打开弹框</button>
+    <Model
+      v-model="model"
+      draggable
+      title="标题"
+    >内容体</Model>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import HelloWorld from './components/HelloWorld.vue';
-
+import Model from './components/Model.vue';
 @Component({
   components: {
-    HelloWorld,
+    Model,
   },
 })
-export default class App extends Vue {}
+export default class App extends Vue {
+  private model: boolean = false;
+
+  private open(): void {
+    this.model = true;
+  }
+}
 </script>
 
 <style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>
