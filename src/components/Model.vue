@@ -1,12 +1,15 @@
 <template>
   <div
     class="model"
-    v-if="value"
+    v-show="value"
   >
-    <div class="cover">
+    <div
+      class="cover"
+      :class="{move: draggable}"
+    >
       <div
         class="content"
-        id="content"
+        @mousedown="move"
         :style="contentStyle"
       >
         <div
@@ -131,6 +134,44 @@ export default class Model extends Vue {
       this.close();
     }
   }
+
+  // 拖拽事件
+  private move(e: any) {
+    const odiv: HTMLElement = e.target.parentNode.parentNode;
+    if (this.draggable) {
+      // 算出鼠标相对元素的位置
+      const disX: number = e.clientX - odiv.offsetLeft;
+      const disY: number = e.clientY - odiv.offsetTop;
+      document.onmousemove = (event: any) => {
+        // 用鼠标的位置减去鼠标相对元素的位置，得到元素的位置
+        let left: number = event.clientX - disX;
+        let top: number = event.clientY - disY;
+        // 计算能移动的最大位置与最小位置
+        const maxX: number = document.documentElement.clientWidth - odiv.offsetWidth;
+        const maxY: number = document.documentElement.clientHeight - odiv.offsetHeight;
+        // if (left < 0) {
+        //   left = 0;
+        // } else if (left > maxX) {
+        //   left = maxX;
+        // }
+        // if (top < 0) {
+        //   top = 0;
+        // } else if (top > maxY) {
+        //   top = maxY;
+        // }
+        left = Math.min(maxX, Math.max(0, left));
+        top = Math.min(maxY, Math.max(0, top));
+        // 移动当前元素
+        odiv.style.left = left + 'px';
+        odiv.style.top = top + 'px';
+        odiv.style.margin = 'unset';
+      };
+      document.onmouseup = () => {
+        document.onmousemove = null;
+        document.onmouseup = null;
+      };
+    }
+  }
 }
 </script>
 
@@ -143,6 +184,9 @@ export default class Model extends Vue {
   bottom: 0;
   background: rgba(0, 0, 0, 0.3);
   z-index: 100;
+  &.move {
+    background: transparent;
+  }
   .content {
     width: 450px;
     height: 300px;

@@ -1,11 +1,12 @@
 {
   "name": "maucash-model",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.0.1",
+  "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "dist": "vue-cli-service build --target lib --name maucash-model ./src/components/*"
   },
   "dependencies": {
     "core-js": "^2.6.5",
