@@ -1,18 +1,20 @@
 {
   "name": "maucash-model",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "dist": "rm -rf dist & vue-cli-service build --target lib --name maucash-model ./src/components/maucash-model.vue"
+    "dist": "vue-cli-service build --target lib --name maucash-model ./src/components/maucash-model.vue",
+    "lib": "vue-cli-service build --target lib --name maucash-model ./src/packages/index.ts"
   },
-  "main": "./dist/maucash-model.umd.min.js",
+  "main": "dist/maucash-model.umd.min.js",
   "keywords": [
     "vue",
     "model",
-    "maucash"
+    "maucash",
+    "maucash-model"
   ],
   "homepage": "https://github.com/kuangshp/maucash-model",
   "author": "kuangshp@126.com",

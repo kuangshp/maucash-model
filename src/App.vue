@@ -3,7 +3,6 @@
     <button @click="open">打开弹框</button>
     <maucash-model
       v-model="model"
-      draggable
       title="标题"
     >内容体</maucash-model>
   </div>
@@ -12,6 +11,7 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import maucashModel from './components/maucash-model.vue';
+
 @Component({
   components: {
     maucashModel,
