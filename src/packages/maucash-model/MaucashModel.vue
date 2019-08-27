@@ -14,7 +14,7 @@
       >
         <div
           class="header"
-          v-if="isShowHeader"
+          v-if="!isHideHeader"
           :class="{move: draggable}"
         >
           <div class="title">{{title}}</div>
@@ -31,7 +31,7 @@
         </div>
         <div
           class="footer"
-          v-if="isShowFooter"
+          v-if="!isHideFooter"
           :style="{'justify-content': render ? 'normal': ''}"
         >
           <template v-if="render">
@@ -40,10 +40,12 @@
           <template v-else>
             <div class="btn-group">
               <button
+                v-if="!isHideCloseBtn"
                 class="btn close-btn"
                 @click="closeBtn"
               >{{closeText}}</button>
               <button
+                v-if="!isHideConfimBtn"
                 class="btn confirm-btn"
                 @click="confirmBtn"
               >{{confirmText}}</button>
@@ -73,11 +75,11 @@ export default class MaucashModel extends Vue {
   // 标题
   @Prop({ type: String, default: '', required: false }) private title!: string;
 
-  // 是否显示头部
-  @Prop({ type: Boolean, default: true, required: false }) private isShowHeader!: boolean;
+  // 是否隐藏头部
+  @Prop({ type: Boolean, default: false, required: false }) private isHideHeader!: boolean;
 
-  // 是否显示底部
-  @Prop({ type: Boolean, default: true, required: false }) private isShowFooter!: boolean;
+  // 是否隐藏底部
+  @Prop({ type: Boolean, default: false, required: false }) private isHideFooter!: boolean;
 
   // 关闭的事件回调
   @Prop({ type: Function, required: false }) private closeFunc!: () => void;
@@ -106,10 +108,19 @@ export default class MaucashModel extends Vue {
   // 是否可拖动
   @Prop({ type: Boolean, default: false, required: false }) private draggable!: boolean;
 
-  private contentStyle: { [propsName: string]: any } = {
-    width: this.width + 'px',
-    height: this.height + 'px',
-  };
+  // 是否隐藏取消按钮
+  @Prop({ type: Boolean, default: false, required: false }) private isHideCloseBtn!: boolean;
+
+  // 是否隐藏确认按钮
+  @Prop({ type: Boolean, default: false, required: false }) private isHideConfimBtn!: boolean;
+
+  // 计算属性
+  private get contentStyle() {
+    return {
+      width: this.width + 'px',
+      height: this.height + 'px',
+    };
+  }
 
   // 关闭事件
   @Emit('input')

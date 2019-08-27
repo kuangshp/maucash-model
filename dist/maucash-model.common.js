@@ -4214,11 +4214,17 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 var components = [maucash_model]; // 定义 install 方法
 
 var install = function install(vue) {
-  // 遍历并注册全局组件
+  // 判断是否已经安装
+  if (install.installed) {
+    return;
+  } // 遍历并注册全局组件
+
+
   components.map(function (component) {
     vue.component(component.name, component);
   });
-};
+}; // 判断是否直接引入文件的方式
+
 
 if (typeof window !== 'undefined' && window.Vue) {
   install(window.Vue);

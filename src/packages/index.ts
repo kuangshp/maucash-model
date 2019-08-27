@@ -1,16 +1,20 @@
-import Vue from 'vue';
 import MaucashModel from './maucash-model';
 
 const components = [MaucashModel];
 
 // 定义 install 方法
-const install = (vue: typeof Vue) => {
+const install = (Vue: any) => {
+  // 判断是否已经安装
+  if ((install as any).installed) {
+    return;
+  }
   // 遍历并注册全局组件
   components.map((component) => {
-    vue.component(component.name, component);
+    Vue.component(component.name, component);
   });
 };
 
+// 判断是否直接引入文件的方式
 if (typeof window !== 'undefined' && (window as any).Vue) {
   install((window as any).Vue);
 }

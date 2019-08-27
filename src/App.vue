@@ -10,7 +10,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import maucashModel from './components/maucash-model.vue';
+import maucashModel from './packages/maucash-model/MaucashModel.vue';
 
 @Component({
   components: {
