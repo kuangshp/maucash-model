@@ -13,6 +13,7 @@
   ```js
   import MaucashModel from 'maucash-model';
   import 'maucash-model/dist/maucash-model.css';
+  Vue.use(MaucashModel);
   ```
 
 * 3、组件中使用
@@ -20,6 +21,21 @@
   ```html
   <button @click="openModel">点击打开弹框</button>
   <maucash-model v-model="model" draggable>内容</maucash-model>
+  ```
+
+  ```js
+  export default {
+    data() {
+      return {
+        model: false,
+      };
+    },
+    methods: {
+      openModel() {
+        this.model = true;
+      },
+    },
+  };
   ```
 
 ## 二、主要的`API`
