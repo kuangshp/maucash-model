@@ -1,15 +1,15 @@
 {
-  "name": "maucash-model",
-  "version": "0.0.5",
+  "name": "maucash-test2",
+  "version": "0.0.2",
   "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "dist": "vue-cli-service build --target lib --name maucash-model ./src/components/maucash-model.vue",
     "lib": "vue-cli-service build --target lib --name maucash-model ./src/packages/index.ts"
   },
   "main": "dist/maucash-model.umd.min.js",
+  "typings": "types/index.d.ts",
   "keywords": [
     "vue",
     "model",
