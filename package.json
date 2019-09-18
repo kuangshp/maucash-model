@@ -1,14 +1,14 @@
 {
   "name": "maucash-test2",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "lib": "vue-cli-service build --target lib --name maucash-model ./src/packages/index.ts"
+    "lib": "vue-cli-service build --dest lib --target lib --name maucash-model ./src/packages/index.ts"
   },
-  "main": "dist/maucash-model.umd.min.js",
+  "main": "lib/maucash-model.umd.min.js",
   "typings": "types/index.d.ts",
   "keywords": [
     "vue",
@@ -58,7 +58,7 @@
     ]
   },
   "files": [
-    "dist/**/*",
+    "lib/**/*",
     "types/*"
   ]
 }

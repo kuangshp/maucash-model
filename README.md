@@ -12,7 +12,7 @@
 
   ```js
   import MaucashModel from 'maucash-model';
-  import 'maucash-model/dist/maucash-model.css';
+  import 'maucash-model/lib/maucash-model.css';
   Vue.use(MaucashModel);
   ```
 
