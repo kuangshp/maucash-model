@@ -258,6 +258,7 @@ export default class MaucashModel extends Vue {
           cursor: pointer;
           background-image: none;
           outline: none;
+          border: transparent;
         }
       }
       .confirm-btn {
